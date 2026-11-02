@@ -1,6 +1,6 @@
 const MODEL_URL='https://teachablemachine.withgoogle.com/models/Ia4xB2psu/';
 let ARCHIVE=[];const FALLBACK_ARCHIVE=[{id:'archive-01',src:'sample.jpg'},{id:'archive-02',src:'category-faces.jpg'},{id:'archive-03',src:'category-shape.jpg'},{id:'archive-04',src:'category-material.jpg'},{id:'archive-05',src:'category-perspective.jpg'}];const SEEN_KEY='uncertain-archive-seen-v2';
-const DEFINITIONS={'faces in things':'A face is perceived in an object or arrangement that does not actually have one.','shape imitation':'One thing copies or resembles the recognizable form of another.','material illusion':'Something appears to be made from a material that it is not.','forced perspective':'Camera angle, distance, or scale makes objects appear differently related in space.'};
+const DEFINITIONS={'faces in things':'Everyday objects or still-life elements are accidentally arranged so that their parts form the appearance of a face.','shape imitation':'One thing copies or resembles the recognizable form of another.','material illusion':'Something appears to be made from a material that it is not.','forced perspective':'Camera angle, distance, or scale makes objects appear differently related in space.'};
 const LABELS={
   'faces in things':{el:'labelFaces',line:'lineFaces',anchor:[.18,.18]},
   'shape imitation':{el:'labelShape',line:'lineShape',anchor:[.82,.18]},
