@@ -1,57 +1,6 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#ffffff">
-  <title>Things That Look Like Other Things — Prototype V2</title>
-  <meta name="description" content="How partial visual information changes machine classification.">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body><main>
-  <section id="intro" class="screen intro active">
-    <div class="hero-image" aria-hidden="true"></div><div id="frostLayer" class="frost-layer" aria-hidden="true"></div><div id="revealCursor" class="reveal-cursor" aria-hidden="true"></div>
-    <div class="hero-copy">
-      <p class="kicker">AN UNCERTAIN ARCHIVE · PROTOTYPE V2</p>
-      <h1>THINGS THAT LOOK<br>LIKE OTHER THINGS</h1>
-      <p class="deck">How does an image change when we can only see part of it?</p>
-      <button id="drawBtn" class="black-btn">DRAW AN IMAGE <span>↗</span></button>
-      <button id="aboutBtn" class="text-btn">ABOUT THIS EXPERIMENT <span>＋</span></button>
-      <div id="aboutText" class="about-text" hidden>Reveal one image in four stages. The image stays the same while the evidence available to the model changes.</div>
-    </div>
-    <p class="reveal-instruction">MOVE TO REVEAL · LEAVE TO FORGET</p>
-  </section>
-  <section id="experiment" class="screen experiment">
-    <header class="experiment-head">
-      <div><p class="eyebrow">THINGS THAT LOOK LIKE OTHER THINGS</p><h2>PARTIAL EVIDENCE</h2></div>
-      <div class="round-meter"><span id="roundLabel">ROUND 01 / 04</span><div class="progress"><i id="progressFill"></i></div></div>
-      <button id="exitBtn" class="icon-btn" aria-label="Return home">×</button>
-    </header>
-    <div class="workspace">
-      <div id="imageBoard" class="image-board" tabindex="0" role="button" aria-label="Reveal part of the image">
-        <canvas id="revealCanvas"></canvas><div id="boardPrompt" class="board-prompt">CLICK ANYWHERE TO REVEAL</div><div id="imageIndex" class="image-index"></div>
-      </div>
-      <aside class="reading-panel">
-        <div class="panel-top"><span>MACHINE READING</span><span id="modelStatus" class="model-status">LOADING MODEL</span></div>
-        <div id="waitingState" class="waiting-state"><p class="waiting-number">01</p><p>The model has no image evidence yet.</p></div>
-        <div id="readingState" class="reading-state" hidden>
-          <p class="micro-label">THE IMAGE IS CURRENTLY READ AS</p><h3 id="predictionName"></h3><p id="predictionConfidence" class="confidence"></p><p id="predictionChange" class="change-note"></p>
-          <div id="definitionBox" class="definition-box" hidden><span>DEFINITION</span><p id="definitionText"></p></div>
-          <button id="continueBtn" class="black-btn panel-button">CONTINUE REVEALING <span>→</span></button>
-        </div>
-        <div id="errorState" class="error-state" hidden><p id="errorMessage">The model could not load.</p><button id="retryBtn" class="white-btn">RETRY MODEL</button></div>
-      </aside>
-    </div>
-  </section>
-  <section id="result" class="screen result">
-    <header class="result-head"><div><p class="eyebrow">ONE IMAGE · MULTIPLE READINGS</p><h2>HOW THE IMAGE CHANGED</h2></div><button id="resultExitBtn" class="icon-btn" aria-label="Return home">×</button></header>
-    <div class="result-layout">
-      <div class="result-visual"><canvas id="historyCanvas"></canvas><p id="historyCaption"></p><button id="fullImageBtn" class="text-btn inline-btn">VIEW THE FULL IMAGE <span>↗</span></button></div>
-      <div class="result-story"><p class="micro-label">SELECT A ROUND TO REVISIT THE AVAILABLE EVIDENCE</p><div id="timeline" class="timeline"></div><div id="selectedDefinition" class="selected-definition"></div></div>
-    </div>
-    <footer class="reflection"><p>WHEN THE LABEL CHANGED, DID THE IMAGE CHANGE—<br>OR DID THE AVAILABLE EVIDENCE CHANGE?</p><button id="tryAgainBtn" class="black-btn">TRY ANOTHER IMAGE <span>↗</span></button></footer>
-  </section>
-</main>
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
-<script src="app.js"></script></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#fff"><title>Things That Look Like Other Things — Prototype V2</title><meta name="description" content="How partial visual information changes machine classification."><link rel="stylesheet" href="styles.css"></head><body><main>
+<section id="intro" class="screen intro active"><div class="hero-image" aria-hidden="true"></div><div id="frostLayer" class="frost-layer" aria-hidden="true"></div><div id="revealCursor" class="reveal-cursor" aria-hidden="true"></div><div class="hero-copy"><p class="kicker">AN UNCERTAIN ARCHIVE · PROTOTYPE V2</p><h1>THINGS THAT LOOK<br>LIKE OTHER THINGS</h1><p class="deck">How does an image change when we can only see part of it?</p><button id="drawBtn" class="black-btn">DRAW AN IMAGE <span>↗</span></button><button id="aboutBtn" class="text-btn">ABOUT THIS EXPERIMENT <span>＋</span></button><div id="aboutText" class="about-text" hidden>Erase the surface to expose an image. As the available evidence changes, four categories continuously pull at the same image.</div></div><p class="reveal-instruction">MOVE TO REVEAL · LEAVE TO FORGET</p></section>
+<section id="experiment" class="screen experiment"><header class="experiment-head"><div><p class="eyebrow">THINGS THAT LOOK LIKE OTHER THINGS</p><h2>ERASE TO CHANGE THE READING</h2></div><div class="visibility-meter"><span id="visibleLabel">VISIBLE 0%</span><div class="progress"><i id="progressFill"></i></div></div><button id="exitBtn" class="icon-btn" aria-label="Return home">×</button></header>
+<div class="continuous-stage"><div id="imageBoard" class="image-board" tabindex="0" aria-label="Drag to erase the cover"><canvas id="revealCanvas"></canvas><svg id="tensionLines" class="tension-lines" aria-hidden="true"><line id="lineFaces"/><line id="lineShape"/><line id="lineMaterial"/><line id="linePerspective"/></svg><div id="labelFaces" class="category-label pos-tl" data-key="faces in things"><span>FACES IN THINGS</span><b>0%</b><p></p></div><div id="labelShape" class="category-label pos-tr" data-key="shape imitation"><span>SHAPE IMITATION</span><b>0%</b><p></p></div><div id="labelMaterial" class="category-label pos-bl" data-key="material illusion"><span>MATERIAL ILLUSION</span><b>0%</b><p></p></div><div id="labelPerspective" class="category-label pos-br" data-key="forced perspective"><span>FORCED PERSPECTIVE</span><b>0%</b><p></p></div><div id="eraserCursor" class="eraser-cursor" aria-hidden="true"></div><div id="boardPrompt" class="board-prompt">DRAG TO ERASE</div><div id="imageIndex" class="image-index"></div></div><div class="stage-footer"><p id="liveNote">The categories will move when enough visual evidence is available.</p><div><button id="clearBtn" class="text-btn">RESET SURFACE</button><button id="finishBtn" class="black-btn" disabled>COMPLETE READING <span>→</span></button></div></div></div><div id="modelError" class="model-error" hidden><p>The model could not load.</p><button id="retryBtn" class="white-btn">RETRY MODEL</button></div></section>
+<section id="result" class="screen result"><header class="result-head"><div><p class="eyebrow">ONE IMAGE · A MOVING READING</p><h2>THE LABELS NEVER STOOD STILL</h2></div><button id="resultExitBtn" class="icon-btn" aria-label="Return home">×</button></header><div class="result-layout"><div class="result-image"><img id="resultImage" alt="The fully revealed archive image"></div><div class="result-story"><p class="micro-label">CLASSIFICATION TRACE</p><div id="trace" class="trace"></div><div id="finalReading" class="final-reading"></div></div></div><footer class="reflection"><p>DID THE IMAGE CHANGE—<br>OR DID THE AVAILABLE EVIDENCE CHANGE?</p><button id="tryAgainBtn" class="black-btn">TRY ANOTHER IMAGE <span>↗</span></button></footer></section>
+</main><script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script><script src="app.js"></script></body></html>
