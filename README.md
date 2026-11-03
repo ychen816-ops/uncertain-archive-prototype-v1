@@ -1,21 +1,24 @@
-# Uncertain Archive Prototype V1
+# Uncertain Archive Prototype Final
 
-An interactive archive prototype exploring the tension between human judgment and machine image classification.
+**Things That Look Like Other Things**
 
-Users gradually reveal an image, classify what they believe they see, and then compare their decision with a Teachable Machine model. Each round exposes more visual information, allowing both the human and the machine to revise their interpretation.
+An interactive archive by Andrea Cheng exploring how partial visual information changes the way an image is categorized.
 
-## Interaction
-
-1. Start with the sample image or upload your own.
-2. Reveal one area of the image at a time.
-3. Choose a category before seeing the machine's prediction.
-4. Compare how both interpretations change across four rounds.
-
-## Categories
+Users erase a covered surface to gradually reveal an image. A Teachable Machine model continuously reclassifies the visible evidence across four overlapping categories:
 
 - Faces in Things
-- Shape Disguise
-- Material Disguise
+- Shape Imitation
+- Material Illusion
 - Forced Perspective
 
-Built as a prototype for an Uncertain Archive project.
+The category labels move as confidence changes. The final page preserves the full source-image ratio, traces how the reading shifted, and lets the viewer question the machine through an alternative human label. Each partial reading can be collected in the Evidence Archive.
+
+## Live project
+
+https://ychen816-ops.github.io/uncertain-archive-prototype-v1/
+
+## Model
+
+https://teachablemachine.withgoogle.com/models/Ia4xB2psu/
+
+Andrea Cheng · Technology B · Fall 2026
