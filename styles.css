@@ -209,3 +209,130 @@ body{background:linear-gradient(180deg,var(--poster-sky),#fff 68%)}
   .image-board[data-orientation="portrait"] .pos-tr,.image-board[data-orientation="square"] .pos-tr{right:-18%;top:5%}
   .image-board[data-orientation="portrait"] .pos-br,.image-board[data-orientation="square"] .pos-br{right:-18%;bottom:5%}
 }
+
+
+/* November refinement: white inner pages, stable archive navigation, quieter About page */
+body,
+.experiment,
+.result,
+.evidence,
+.about{background:#fff}
+
+@media (min-width:901px){
+  .about.active{
+    display:block;
+    height:100dvh;
+    min-height:0;
+    overflow-y:auto;
+    overscroll-behavior:contain;
+  }
+}
+
+/* Keep the archive's sticky header at one stable size so it cannot jump while scrolling. */
+.evidence-nav-shell{
+  position:sticky;
+  top:0;
+  z-index:30;
+  margin:0 -4vw 26px;
+  padding:14px 4vw 12px;
+  background:rgba(255,255,255,.97);
+  border-bottom:1px solid #111;
+  box-shadow:none;
+  backdrop-filter:blur(12px);
+  transition:none;
+}
+.evidence-head,
+.evidence.is-scrolled .evidence-head{
+  display:grid;
+  grid-template-columns:1fr 52px;
+  align-items:center;
+  gap:24px;
+  padding:0;
+  border:0;
+}
+.evidence-head .eyebrow,
+.evidence-head p:last-child,
+.evidence.is-scrolled .evidence-head .eyebrow,
+.evidence.is-scrolled .evidence-head p:last-child{display:none}
+.evidence-head h2,
+.evidence.is-scrolled .evidence-head h2{
+  margin:0;
+  color:#111;
+  font:700 25px/1 "Space Grotesk";
+  font-style:normal;
+  letter-spacing:-.035em;
+  -webkit-text-stroke:0;
+  paint-order:normal;
+}
+.evidence-head .icon-btn,
+.evidence.is-scrolled .evidence-head .icon-btn{width:42px;height:42px;font-size:21px}
+.evidence-filters,
+.evidence.is-scrolled .evidence-filters{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+  padding:10px 0 0;
+}
+.evidence-filters button,
+.evidence.is-scrolled .evidence-filters button{padding:7px 11px;font-size:8px}
+.evidence-grid{padding-top:4px}
+
+/* About: one quiet question line above the project information. */
+.about{padding:28px 4vw 0}
+.about-head{position:relative;z-index:2}
+.about-layout{
+  display:block;
+  max-width:1120px;
+  margin:8px auto 0;
+}
+.about-title{text-align:center;margin:0 auto 36px}
+.about-title .eyebrow{margin:0 0 16px}
+.about-title h2{
+  max-width:920px;
+  margin:0 auto;
+  color:#111;
+  font:600 clamp(20px,2.25vw,34px)/1.2 "Space Grotesk";
+  font-style:normal;
+  letter-spacing:-.035em;
+  -webkit-text-stroke:0;
+  paint-order:normal;
+  filter:none;
+}
+.about-copy{max-width:920px;margin:0 auto}
+.about-card{box-shadow:none}
+.about-footer{
+  max-width:1120px;
+  margin:58px auto 0;
+  padding:20px 0 28px;
+  border-top:1px solid #111;
+  color:#555;
+  font:600 10px "Space Grotesk";
+  letter-spacing:.08em;
+}
+
+/* Keep all four initial category cards beside the source frame. */
+.image-board[data-orientation] .pos-tl{left:-215px;right:auto;top:9%;bottom:auto}
+.image-board[data-orientation] .pos-bl{left:-215px;right:auto;top:auto;bottom:9%}
+.image-board[data-orientation] .pos-tr{right:-215px;left:auto;top:9%;bottom:auto}
+.image-board[data-orientation] .pos-br{right:-215px;left:auto;top:auto;bottom:9%}
+.image-board[data-orientation="landscape"] .category-label{width:min(205px,20vw)}
+.image-index{display:none!important}
+
+@media(max-width:900px){
+  .evidence-nav-shell{margin:0 -20px 22px;padding:12px 20px 10px}
+  .about{padding:20px 20px 0}
+  .about-title{margin-bottom:26px}
+  .about-title h2{font-size:clamp(21px,5.4vw,31px)}
+  .about-footer{margin-top:40px}
+}
+@media(max-width:560px){
+  .evidence-filters,.evidence.is-scrolled .evidence-filters{
+    overflow-x:auto;
+    flex-wrap:nowrap;
+    padding-bottom:3px;
+  }
+  .image-board[data-orientation] .pos-tl,
+  .image-board[data-orientation] .pos-bl{left:-18%}
+  .image-board[data-orientation] .pos-tr,
+  .image-board[data-orientation] .pos-br{right:-18%}
+}
