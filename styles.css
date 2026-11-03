@@ -311,10 +311,10 @@ body,
 }
 
 /* Keep all four initial category cards beside the source frame. */
-.image-board[data-orientation] .pos-tl{left:-215px;right:auto;top:9%;bottom:auto}
-.image-board[data-orientation] .pos-bl{left:-215px;right:auto;top:auto;bottom:9%}
-.image-board[data-orientation] .pos-tr{right:-215px;left:auto;top:9%;bottom:auto}
-.image-board[data-orientation] .pos-br{right:-215px;left:auto;top:auto;bottom:9%}
+.image-board[data-orientation] .pos-tl{left:-170px;right:auto;top:9%;bottom:auto}
+.image-board[data-orientation] .pos-bl{left:-170px;right:auto;top:auto;bottom:9%}
+.image-board[data-orientation] .pos-tr{right:-170px;left:auto;top:9%;bottom:auto}
+.image-board[data-orientation] .pos-br{right:-170px;left:auto;top:auto;bottom:9%}
 .image-board[data-orientation="landscape"] .category-label{width:min(205px,20vw)}
 .image-index{display:none!important}
 
