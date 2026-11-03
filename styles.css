@@ -28,3 +28,28 @@
   .reflection{margin:0 -3vw;padding:20px 3vw;min-height:112px;align-items:center}
   .reflection p{font-size:clamp(25px,3.4vw,48px)}
 }
+
+/* Evidence archive interaction and result trace refinements */
+.final-reading #viewFullResult{display:flex;width:max-content;margin-top:14px;padding:13px 18px;border-radius:999px;background:#000;color:#fff;box-shadow:0 0 0 0 rgba(0,0,0,.32);animation:sourceButtonPulse 1.45s ease-in-out infinite}
+.final-reading #viewFullResult:hover{animation-play-state:paused;transform:translateY(-2px)}
+@keyframes sourceButtonPulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(0,0,0,.32)}50%{opacity:.48;box-shadow:0 0 0 9px rgba(0,0,0,0)}}
+.trace-item{min-height:170px;display:grid;grid-template-rows:82px auto auto auto;align-content:start}
+.trace-fragment{width:134px;height:74px;display:grid;place-items:center;align-self:start;margin-bottom:8px;isolation:isolate}
+.trace-item .trace-fragment img{display:block!important;max-width:112px!important;max-height:70px!important;width:auto!important;height:auto!important;object-fit:contain}
+.trace-item>span:not(.trace-fragment),.trace-item>b,.trace-item>em{position:relative;z-index:2}
+.evidence.active{display:block;height:100dvh;overflow-y:auto;overscroll-behavior:contain}
+.evidence-grid{columns:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:42px 26px;align-items:start}
+.evidence-piece{appearance:none;border:0;background:transparent;color:inherit;font:inherit;padding:0;margin:0;min-width:0;width:100%;text-align:center;cursor:pointer;display:grid;grid-template-rows:180px auto;transform:none;transition:transform .22s ease,opacity .22s ease}
+.evidence-piece:hover,.evidence-piece:focus-visible{transform:translateY(-8px);outline:0}
+.evidence-fragment{height:180px;display:grid;place-items:center}
+.evidence-fragment img{display:block;max-width:100%;max-height:170px;width:auto;height:auto;object-fit:contain;filter:drop-shadow(0 8px 9px rgba(0,0,0,.12));transition:transform .25s ease,filter .25s ease}
+.evidence-piece:hover .evidence-fragment img,.evidence-piece:focus-visible .evidence-fragment img{transform:scale(1.1);filter:drop-shadow(0 14px 13px rgba(0,0,0,.2))}
+.evidence-caption{display:block;margin-top:12px;text-align:center}
+.evidence-caption b,.evidence-caption span,.evidence-caption em{display:block}
+.evidence-caption b{font:700 11px "Space Grotesk";text-transform:uppercase}
+.evidence-caption span{font:600 9px "Space Grotesk";letter-spacing:.05em;margin-top:4px;color:var(--gray)}
+.evidence-caption em{font:400 9px "DM Sans";font-style:normal;margin-top:3px;color:#aaa}
+.evidence-piece:hover .evidence-caption b{text-decoration:underline;text-underline-offset:4px}
+.evidence-viewer[hidden]{display:none}.evidence-viewer{position:fixed;inset:0;z-index:1000;background:rgba(255,255,255,.94);backdrop-filter:blur(18px);display:grid;grid-template-columns:minmax(240px,.33fr) minmax(0,.67fr);gap:4vw;padding:4vw;align-items:center;opacity:0;transition:opacity .18s}.evidence-viewer.open{opacity:1}.viewer-close{position:absolute;right:28px;top:28px}.viewer-copy h3{font:700 clamp(38px,5vw,78px)/.9 "Space Grotesk";letter-spacing:-.06em;text-transform:uppercase;margin:12px 0 18px}.viewer-copy>p:not(.eyebrow){font:600 11px "Space Grotesk";letter-spacing:.07em}.viewer-copy .viewer-note{max-width:310px;margin-top:30px!important;font:400 13px/1.55 "DM Sans"!important;letter-spacing:0!important;color:var(--gray)}.viewer-image{position:relative;height:min(76vh,760px);overflow:hidden;border-radius:var(--radius);background:var(--paper)}.viewer-image img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.viewer-image #viewerSource{filter:grayscale(1);opacity:.36}.viewer-image #viewerOverlay{filter:none;animation:evidenceFlash 1.25s steps(1,end) infinite}@keyframes evidenceFlash{0%,100%{opacity:1}50%{opacity:.12}}
+@media(max-width:900px){.evidence-grid{grid-template-columns:repeat(auto-fill,minmax(135px,1fr));gap:32px 18px}.evidence-viewer{grid-template-columns:1fr;padding:70px 20px 20px;overflow-y:auto}.viewer-copy{align-self:end}.viewer-copy .viewer-note{margin-top:15px!important}.viewer-image{height:58vh}.viewer-close{right:18px;top:16px}}
+@media(max-width:560px){.evidence-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.evidence-piece{grid-template-rows:140px auto}.evidence-fragment{height:140px}.evidence-fragment img{max-height:130px}}
