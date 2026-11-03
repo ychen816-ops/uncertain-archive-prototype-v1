@@ -57,3 +57,15 @@
 /* Allow the archive to use normal document scrolling on desktop. */
 html.evidence-mode,body.evidence-mode{height:auto!important;min-height:100%;overflow-y:auto!important;overflow-x:hidden!important}
 body.evidence-mode .evidence.active{height:auto!important;min-height:100dvh;overflow:visible!important}
+
+/* Full-image evidence mapping and compact archive navigation */
+.evidence-nav-shell{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(14px);transition:box-shadow .25s,padding .25s}
+.evidence.is-scrolled .evidence-nav-shell{box-shadow:0 1px 0 #000;padding:8px 0 9px}
+.evidence.is-scrolled .evidence-head{padding:0;border-bottom:0;align-items:center}
+.evidence.is-scrolled .evidence-head .eyebrow,.evidence.is-scrolled .evidence-head p:last-child{display:none}
+.evidence.is-scrolled .evidence-head h2{font-size:20px;line-height:1;letter-spacing:-.035em;margin:0}
+.evidence.is-scrolled .evidence-head .icon-btn{width:36px;height:36px;font-size:19px}
+.evidence.is-scrolled .evidence-filters{padding:7px 0 0;gap:6px}
+.evidence.is-scrolled .evidence-filters button{padding:6px 10px;font-size:8px}
+.viewer-image img{object-fit:contain}
+@media(max-width:560px){.evidence.is-scrolled .evidence-filters{overflow-x:auto}.evidence.is-scrolled .evidence-head h2{font-size:18px}}
